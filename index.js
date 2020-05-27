@@ -23,6 +23,12 @@ const Twitter = require('twitter')
 
 // now working
 
+app.use(cors())
+
+app.get('/tweets', (req, res) => {
+    res.send('hello')
+})
+
 const twit = new Twitter({
     consumer_key: '881flbXb16SbwdP3R2sRKvdji',
     consumer_secret: '1lgXzKUdWoMzdvba4r1YEY7gAEXqlMOSRMq99Iz7mUM2nNikFi',

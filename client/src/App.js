@@ -18,9 +18,6 @@ function App(props) {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
 
-    const doSomething = () => {
-
-    }
     return (
         <div className="container">
             <BrowserRouter>
