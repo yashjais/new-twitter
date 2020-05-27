@@ -19,7 +19,9 @@ class Tweets extends React.Component {
         console.log(this.state)
         let input = this.state.input
         axios.get(`http://localhost:3010/tweets?source=${input}`)
-            .then(tweet => console.log(tweet))
+            .then(tweet => {
+                console.log(tweet.data)
+            })
             .catch(err => alert(err))
         input = ""
         this.setState({ input })

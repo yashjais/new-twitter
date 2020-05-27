@@ -3,6 +3,7 @@ const app = express()
 const cors = require('cors')
 const port = 3010
 const Twitter = require('twitter')
+
 // var Twit = require('twit')
 
 // var T = new Twit({
@@ -23,18 +24,22 @@ const Twitter = require('twitter')
 
 // now working
 
-app.use(cors())
-
-app.get('/tweets', (req, res) => {
-    res.send('hello')
-})
-
 const twit = new Twitter({
     consumer_key: '881flbXb16SbwdP3R2sRKvdji',
     consumer_secret: '1lgXzKUdWoMzdvba4r1YEY7gAEXqlMOSRMq99Iz7mUM2nNikFi',
     access_token_key: '1132229170388332545-Cw7n7UQzfMXUn8fkKvU8g3JPUXG7iK',
     access_token_secret: 'TZxdpxpwV5ys7F9bxZkK7hoW3ErpBJUfwBX6MZMINgCpg'
 })
+
+app.use(cors())
+
+app.get('/tweets', (req, res) => {
+    console.log(req.query)
+    const incomingData = req.query.source
+    res.send(incomingData)
+})
+
+
 
 // You can also get the stream in a callback if you prefer.
 // twit.stream('statuses/filter', { track: 'modi' }, function (stream) {
