@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import io from "socket.io-client";
 
-const socket = io('http://localhost:3010/tweet');
+const socket = io('http://localhost:3010');
 
 
 function Tweets(props) {
@@ -14,26 +14,18 @@ function Tweets(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(input)
-        // let input = this.state.input
-        // axios.get(`http://localhost:3010/tweets?source=${input}`)
-        //     .then(tweet => {
-        //         console.log(tweet.data)
-        //     })
-        //     .catch(err => alert(err))
+        console.log('input', input)
 
-        // socket.emit('incomingData',);
+        axios.get(`http://localhost:3010/tweets?source=${input}`)
+            .then(tweet => {
+                console.log('response', tweet.data)
+            })
+            .catch(err => alert(err))
 
-        // socket.on('check', function (data) {
-        //     console.log(data)
-        // })
+        socket.on('tweet', function (data) {
+            console.log('tweet', data)
+        })
 
-        // input = ""
-        // this.setState({ input })
-
-        // socket.on('tweet', function (data) {
-        //     console.log(data)
-        // })
     }
 
 
