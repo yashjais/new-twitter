@@ -1,5 +1,9 @@
 import React from 'react'
 import axios from 'axios'
+import io from "socket.io-client";
+
+const socket = io('http://localhost:3010/tweet');
+
 
 class Tweets extends React.Component {
     constructor() {
@@ -23,11 +27,25 @@ class Tweets extends React.Component {
                 console.log(tweet.data)
             })
             .catch(err => alert(err))
+
+        // socket.emit('incomingData',);
+
+        // socket.on('check', function (data) {
+        //     console.log(data)
+        // })
+
         input = ""
         this.setState({ input })
+
+        // socket.on('tweet', function (data) {
+        //     console.log(data)
+        // })
     }
 
     render() {
+        socket.on('incomingData', function (data) {
+            console.log(data)
+        })
         return (
             <div style={{ textAlign: "center" }}>
                 <br />
