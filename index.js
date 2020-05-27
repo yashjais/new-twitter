@@ -31,16 +31,16 @@ const twit = new Twitter({
 })
 
 // You can also get the stream in a callback if you prefer.
-twit.stream('statuses/filter', { track: 'modi' }, function (stream) {
+// twit.stream('statuses/filter', { track: 'modi' }, function (stream) {
 
-    stream.on('data', function (event) {
-        console.log(event)
-    })
+//     stream.on('data', function (event) {
+//         console.log(event)
+//     })
 
-    stream.on('error', function (error) {
-        console.log(error)
-    })
-});
+//     stream.on('error', function (error) {
+//         console.log(error)
+//     })
+// });
 
 
 

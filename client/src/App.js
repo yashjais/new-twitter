@@ -1,26 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
+import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+} from 'reactstrap';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Home from './components/Home'
+import Tweets from './components/Tweets'
+
+function App(props) {
+    // console.log(props)
+    const [isOpen, setIsOpen] = useState(false);
+    const toggle = () => setIsOpen(!isOpen);
+
+    const doSomething = () => {
+
+    }
+    return (
+        <div className="container">
+            <BrowserRouter>
+
+                <Navbar color="light" light expand="md">
+                    <NavbarBrand style={{ fontWeight: "bold", textTransform: "uppercase" }}>Twitter Task</NavbarBrand>
+                    <NavbarToggler onClick={toggle} />
+                    <Collapse isOpen={isOpen} navbar>
+                        <Nav className="mr-auto" navbar>
+                            <React.Fragment>
+                                <NavItem>
+                                    <NavLink tag={Link} to="/">Home</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink tag={Link} to="/tweets">tweets</NavLink>
+                                </NavItem>
+                            </React.Fragment>
+                        </Nav>
+                    </Collapse>
+                </Navbar>
+
+                <Switch>
+                    <Route path="/" component={Home} exact={true} />
+                    <Route path="/tweets" component={Tweets} exact={true} />
+
+                </Switch>
+
+            </BrowserRouter>
+        </div>
+    )
 }
 
 export default App;
