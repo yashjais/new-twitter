@@ -3,6 +3,9 @@ const app = express()
 const cors = require('cors')
 const port = 3010
 const Twitter = require('twitter')
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
+// const io = socket(server)
 
 // var Twit = require('twit')
 
@@ -36,25 +39,23 @@ app.use(cors())
 app.get('/tweets', (req, res) => {
     console.log(req.query)
     const incomingData = req.query.source
-    res.send(incomingData)
+    res.send('hello')
+
+    // You can also get the stream in a callback if you prefer.
+    twit.stream('statuses/filter', { track: incomingData }, function (stream) {
+
+        stream.on('data', function (event) {
+            io.emit('tweet', event);
+
+            console.log(event)
+        })
+
+        stream.on('error', function (error) {
+            console.log(error)
+        })
+    });
 })
 
-
-
-// You can also get the stream in a callback if you prefer.
-// twit.stream('statuses/filter', { track: 'modi' }, function (stream) {
-
-//     stream.on('data', function (event) {
-//         console.log(event)
-//     })
-
-//     stream.on('error', function (error) {
-//         console.log(error)
-//     })
-// });
-
-
-
-app.listen(port, () => {
+http.listen(port, () => {
     console.log('listening on the port', port)
 })
