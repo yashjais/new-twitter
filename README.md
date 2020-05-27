@@ -1,12 +1,53 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Twitter-Application
+
+Twitter Application is an Full-Stack Application which is fetching real time tweets from twitter with twitter stream functionality. It also uses websocket for connection between front end and back end. The Back-End is made using Node-Express. The designing tools used in this app are bootstrap and reactstrap.
+
+## Dependencies
+
+### Back-End
+ 
+1. concurrently: "^5.0.2", // npm install concurrently
+2. cors: "^2.8.5", // npm install cors
+3. express: "^4.17.1", // npm install express
+4. reactstrap: "^8.4.1", // npm install reactstrap
+5. socket.io: "^2.3.0", // npm install socket.io
+6. twitter: "^1.7.1" // npm install twitter
+
+### Front-End
+
+1. axios: "^0.19.2", // npm install axios
+2. bootstrap": "^4.5.0", // npm install bootstrap
+3. react: "^16.12.0", // npm install react
+4. react-dom: "^16.12.0", // npm install react-dom
+5. react-router-dom: "^5.1.2", // npm install react-router-dom
+6. react-scripts: "3.3.0", // npm install react-scripts
+7. socket.io-client: "^2.3.0" // npm install socket.io-client
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm run dev`
 
 Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
+
+### `nodemon index.js` || `npm dev server`
+
+Runs the back-end app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3020) to view it in the browser.
+
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
+
+You will be needing postman if you only run Backend.
+
+### `npm start`
+
+Runs the front-end app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
@@ -33,7 +74,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
